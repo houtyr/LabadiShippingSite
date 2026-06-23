@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Labadi Shipping | Moving the Diaspora Without Limitations</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandNavy: '#00264D',
+                        brandOrange: '#FF7F27',
+                        brandTeal: '#004D73',
+                        surfaceGray: '#F9FAFB'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-surfaceGray text-brandNavy min-h-screen flex flex-col justify-between relative overflow-x-hidden">
+
+    <nav class="bg-transparent absolute top-0 left-0 w-full z-50 border-none">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 grid grid-cols-3 items-center">
+            <div aria-hidden="true"></div>
+
+            <div class="flex items-center justify-center">
+                <span class="font-extrabold tracking-wider uppercase text-lg sm:text-xl leading-none whitespace-nowrap">
+                    <span class="text-white">Labadi</span>
+                    <span class="text-brandOrange"> Shipping</span>
+                </span>
+            </div>
+
+            <div class="flex items-center justify-end">
+                <button type="button" onclick="toggleModal(true)" class="text-sm font-semibold border border-white/30 rounded-xl px-4 py-2.5 text-white hover:bg-white/10 transition-all duration-150 shadow-sm">
+                    Shipper Portal ->
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content" class="flex-grow">
+        <header class="relative overflow-hidden min-h-[85vh] md:min-h-[75vh]">
+            <div class="absolute inset-0 z-0" aria-hidden="true">
+                <img src="images/Labadi%20Shipping%202.png" alt="" class="w-full h-full object-cover object-center" loading="eager" decoding="async">
+                <div class="absolute inset-0 bg-slate-950/65"></div>
+            </div>
+
+            <div class="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-28 pb-24 sm:pt-32 sm:pb-24 lg:pt-36 lg:pb-28">
+                <div class="max-w-3xl lg:max-w-4xl lg:mr-auto text-center lg:text-left mb-10 lg:mb-12">
+                    <span class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-xs font-semibold bg-white/10 text-orange-200 border border-orange-300/25 mb-5 tracking-wide uppercase">
+                        <span class="w-1.5 h-1.5 rounded-full bg-brandOrange animate-pulse"></span> Now Launching in New England
+                    </span>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-6 leading-[1.15]">
+                        Moving the Diaspora <span class="text-brandOrange">Without Limitations</span>
+                    </h1>
+                    <p class="text-base sm:text-lg lg:text-xl text-slate-200/95 font-medium max-w-3xl mx-auto lg:mx-0 leading-relaxed">
+                        The centralized digital marketplace to effortlessly compare prices, delivery timelines, and logistics options with absolute transparency and trust.
+                    </p>
+                </div>
+
+                <div class="max-w-3xl lg:mx-0 mx-auto bg-slate-950/60 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.35)] p-5 sm:p-6 lg:p-8 border border-white/20 relative">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
+                        <div class="flex flex-col">
+                            <label for="routeOrigin" class="block text-xs font-bold text-slate-200 uppercase tracking-widest mb-2 flex items-center gap-1.5">
+                                Origin Location
+                            </label>
+                            <div class="relative">
+                                <select id="routeOrigin" aria-label="Origin location" class="w-full bg-white/10 text-white border border-white/25 rounded-xl px-4 py-4 font-semibold appearance-none cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-brandOrange/50">
+                                    <option selected>Massachusetts / New England</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col">
+                            <label for="routeDestination" class="block text-xs font-bold text-slate-200 uppercase tracking-widest mb-2 flex items-center gap-1.5">
+                                Destination Country
+                            </label>
+                            <div class="relative">
+                                <select id="routeDestination" aria-label="Destination country" class="w-full bg-white/10 text-white border border-white/25 rounded-xl px-4 py-4 font-semibold appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-brandOrange/50 transition-all">
+                                    <option value="Ghana" selected class="text-brandNavy">Ghana (Accra / Tema)</option>
+                                    <option disabled class="text-gray-400">Nigeria (Coming Soon)</option>
+                                    <option disabled class="text-gray-400">Kenya (Coming Soon)</option>
+                                    <option disabled class="text-gray-400">Liberia (Coming Soon)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="button" onclick="toggleModal(true)" class="w-full bg-brandOrange hover:bg-orange-600 text-white font-bold text-base tracking-wide py-4 px-6 rounded-xl shadow-lg shadow-brandOrange/20 transition-all duration-150 transform active:scale-[0.99] flex items-center justify-center space-x-2 focus:outline-none focus:ring-2 focus:ring-brandOrange/60 focus:ring-offset-2 focus:ring-offset-slate-900">
+                        <span>Find Verified Shippers</span>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <section class="bg-surfaceGray">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
+            <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-14 lg:mb-16">
+                <h2 id="how-it-works-title" class="text-3xl font-extrabold tracking-tight text-brandNavy sm:text-4xl mb-4">How Labadi Shipping Works</h2>
+                <p class="text-brandNavy/70 text-base sm:text-lg">A transparent end-to-end process, built for speed and trust.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center" aria-labelledby="how-it-works-title">
+                <div class="lg:col-span-5">
+                    <figure class="bg-white rounded-2xl border border-brandNavy/10 shadow-md p-3 sm:p-4 lg:p-5">
+                        <img src="images/Labadi%20Shipping%20logo.png" alt="Labadi Shipping brand mark showing shipping routes and LS container transfer" class="w-full h-auto object-contain rounded-xl" loading="lazy" decoding="async">
+                    </figure>
+                </div>
+
+                <div class="lg:col-span-7">
+                    <ol class="space-y-6 sm:space-y-8" aria-label="Three-step shipment flow">
+                        <li class="relative pl-14 sm:pl-16">
+                            <span class="absolute left-0 top-0 w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-orange-50 text-brandOrange border border-brandOrange/20 flex items-center justify-center font-extrabold">1</span>
+                            <h3 class="text-xl sm:text-2xl font-bold text-brandNavy mb-2">Compare Options</h3>
+                            <p class="text-brandNavy/70 text-sm sm:text-base leading-relaxed">Enter your destination to view upfront container pricing, precise departure schedules, and transparent community reviews.</p>
+                        </li>
+                        <li class="relative pl-14 sm:pl-16 before:content-[''] before:absolute before:left-5 before:-top-4 before:bottom-[calc(100%+0.25rem)] before:w-px before:bg-brandNavy/15">
+                            <span class="absolute left-0 top-0 w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-blue-50 text-brandTeal border border-brandTeal/20 flex items-center justify-center font-extrabold">2</span>
+                            <h3 class="text-xl sm:text-2xl font-bold text-brandNavy mb-2">Secure Space</h3>
+                            <p class="text-brandNavy/70 text-sm sm:text-base leading-relaxed">Lock in your barrel, storage box, or vehicle cargo space seamlessly through our audited, secure payment channel.</p>
+                        </li>
+                        <li class="relative pl-14 sm:pl-16 before:content-[''] before:absolute before:left-5 before:-top-4 before:bottom-[calc(100%+0.25rem)] before:w-px before:bg-brandNavy/15">
+                            <span class="absolute left-0 top-0 w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-emerald-50 text-emerald-600 border border-emerald-600/20 flex items-center justify-center font-extrabold">3</span>
+                            <h3 class="text-xl sm:text-2xl font-bold text-brandNavy mb-2">Track Orders</h3>
+                            <p class="text-brandNavy/70 text-sm sm:text-base leading-relaxed">Ditch the phone calls. Get automated tracking status straight from the local port directly to final delivery destination.</p>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-brandNavy text-white/60 text-xs py-8 border-t border-white/10 w-full">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <span class="text-sm font-semibold tracking-wide text-white">
+                LABADI <span class="text-brandOrange">SHIPPING</span>
+            </span>
+            <div class="flex items-center gap-3">
+                <button id="downloadReportBtn" type="button" onclick="downloadLeadReport()" class="text-white border border-white/30 rounded-lg px-3 py-1.5 hover:bg-white/10 transition-all font-semibold">
+                    Admin Leads CSV
+                </button>
+                <p>&copy; 2026 Labadi Shipping Marketplace. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="leadModal" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm hidden items-center justify-center p-4 z-50 transition-opacity duration-300 opacity-0" aria-modal="true" role="dialog">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 sm:p-8 shadow-2xl relative border border-gray-100 transform scale-95 transition-transform duration-300">
+            <button type="button" onclick="toggleModal(false)" class="absolute top-4 right-4 text-brandNavy/40 hover:text-brandNavy/80 p-2 rounded-lg hover:bg-gray-100 transition-all" aria-label="Close Modal">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+
+            <div class="mt-2 text-center sm:text-left">
+                <h3 class="text-2xl font-extrabold text-brandNavy tracking-tight mb-3">
+                    Onboarding Our New England Cohort!
+                </h3>
+                <p class="text-brandNavy/70 text-sm sm:text-base leading-relaxed mb-6">
+                    We are currently auditing and registering trusted independent shippers in Massachusetts. Sign up below for early booking access, exclusive platform rates, and instant notifications the moment live tracking goes active.
+                </p>
+
+                <form id="leadForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                    <div class="flex flex-col">
+                        <input type="text" id="nameInput" placeholder="Full name" required maxlength="120" class="w-full border border-gray-200 rounded-xl px-4 py-3.5 text-brandNavy font-medium placeholder-brandNavy/30 focus:outline-none focus:border-brandTeal focus:ring-1 focus:ring-brandTeal/20 transition-all">
+                    </div>
+                    <div class="flex flex-col">
+                        <input type="tel" id="phoneInput" placeholder="Phone number" required maxlength="25" pattern="^[0-9+()\-\s]{7,25}$" title="Please enter a valid phone number" class="w-full border border-gray-200 rounded-xl px-4 py-3.5 text-brandNavy font-medium placeholder-brandNavy/30 focus:outline-none focus:border-brandTeal focus:ring-1 focus:ring-brandTeal/20 transition-all">
+                    </div>
+                    <div class="flex flex-col">
+                        <input type="email" id="emailInput" placeholder="Email address" required maxlength="254" class="w-full border border-gray-200 rounded-xl px-4 py-3.5 text-brandNavy font-medium placeholder-brandNavy/30 focus:outline-none focus:border-brandTeal focus:ring-1 focus:ring-brandTeal/20 transition-all">
+                    </div>
+
+                    <div class="cf-turnstile" data-sitekey="1x00000000000000000000AA" data-theme="light"></div>
+
+                    <button id="submitBtn" type="submit" class="w-full bg-brandOrange hover:bg-orange-600 text-white font-bold tracking-wide py-3.5 rounded-xl shadow-md shadow-brandOrange/10 transition-all duration-150">
+                        Get Early Access
+                    </button>
+                </form>
+
+                <div id="successMessage" class="hidden flex flex-col items-center justify-center py-6 text-center">
+                    <div class="w-12 h-12 bg-emerald-50 text-emerald-500 rounded-full flex items-center justify-center mb-3 border border-emerald-500/20">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path></svg>
+                    </div>
+                    <p class="text-brandNavy font-bold text-lg mb-1">Welcome Aboard!</p>
+                    <p class="text-brandNavy/70 text-sm">You are officially in queue for early priority access.</p>
+                </div>
+                <div id="errorMessage" class="hidden mt-3 bg-red-50 text-red-600 text-xs px-4 py-2 rounded-lg border border-red-200"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById('leadModal');
+        const modalContainer = modal.querySelector('div');
+        const leadForm = document.getElementById('leadForm');
+        const successMessage = document.getElementById('successMessage');
+        const errorMessage = document.getElementById('errorMessage');
+        const submitBtn = document.getElementById('submitBtn');
+        const closeModalBtn = modal.querySelector('button[aria-label="Close Modal"]');
+        const downloadReportBtn = document.getElementById('downloadReportBtn');
+        let lastFocusedElement = null;
+
+        function getFocusableElements() {
+            return modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+        }
+
+        function toggleModal(show) {
+            if (show) {
+                lastFocusedElement = document.activeElement;
+                modal.style.display = 'flex';
+                void modal.offsetHeight;
+                modal.classList.remove('opacity-0');
+                modal.classList.add('opacity-100');
+                modalContainer.classList.remove('scale-95');
+                modalContainer.classList.add('scale-100');
+                document.body.classList.add('overflow-hidden');
+                setTimeout(() => {
+                    closeModalBtn.focus();
+                }, 0);
+            } else {
+                modal.classList.remove('opacity-100');
+                modal.classList.add('opacity-0');
+                modalContainer.classList.remove('scale-100');
+                modalContainer.classList.add('scale-95');
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                    document.body.classList.remove('overflow-hidden');
+                    resetModalState();
+                    if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+                        lastFocusedElement.focus();
+                    }
+                }, 300);
+            }
+        }
+
+        async function downloadLeadReport() {
+            downloadReportBtn.disabled = true;
+            const defaultLabel = downloadReportBtn.textContent;
+            downloadReportBtn.textContent = 'Preparing report...';
+
+            try {
+                const response = await fetch('/api/reports/leads', { method: 'GET' });
+
+                if (!response.ok) {
+                    let message = 'Unable to download report.';
+                    const contentType = response.headers.get('content-type') || '';
+
+                    if (contentType.includes('application/json')) {
+                        const payload = await response.json();
+                        message = payload.error || message;
+                    }
+
+                    throw new Error(`${message} Ensure you are signed in via Cloudflare Access.`);
+                }
+
+                const blob = await response.blob();
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = `labadi_shipping_leads_export_${new Date().toISOString().split('T')[0]}.csv`;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                URL.revokeObjectURL(url);
+            } catch (error) {
+                window.alert(error.message || 'Unable to download report.');
+            } finally {
+                downloadReportBtn.disabled = false;
+                downloadReportBtn.textContent = defaultLabel;
+            }
+        }
+
+        function resetModalState() {
+            leadForm.style.display = 'block';
+            successMessage.style.display = 'none';
+            errorMessage.style.display = 'none';
+            errorMessage.innerText = '';
+            submitBtn.disabled = false;
+            leadForm.reset();
+            const responseInput = leadForm.querySelector('[name="cf-turnstile-response"]');
+            if (responseInput) {
+                responseInput.value = '';
+            }
+            if (window.turnstile) {
+                turnstile.reset();
+            }
+        }
+
+        function showError(msg) {
+            errorMessage.innerText = msg;
+            errorMessage.classList.remove('hidden');
+        }
+
+        async function handleFormSubmit(e) {
+            e.preventDefault();
+            errorMessage.classList.add('hidden');
+            submitBtn.disabled = true;
+
+            const name = document.getElementById('nameInput').value.trim();
+            const phone = document.getElementById('phoneInput').value.trim();
+            const email = document.getElementById('emailInput').value.trim();
+            const origin = document.getElementById('routeOrigin').value;
+            const destination = document.getElementById('routeDestination').value;
+            const tokenInput = leadForm.querySelector('[name="cf-turnstile-response"]');
+            const turnstileToken = tokenInput ? tokenInput.value : '';
+
+            if (!turnstileToken) {
+                showError('Please complete the security verification puzzle.');
+                submitBtn.disabled = false;
+                return;
+            }
+
+            try {
+                const response = await fetch('/api/leads', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, phone, email, origin, destination, turnstileToken })
+                });
+
+                const result = await response.json();
+
+                if (response.ok && result.success) {
+                    leadForm.style.display = 'none';
+                    successMessage.style.display = 'flex';
+                    setTimeout(() => {
+                        toggleModal(false);
+                    }, 3000);
+                } else {
+                    showError(result.error || 'An unexpected system error occurred processing your request.');
+                    submitBtn.disabled = false;
+                }
+            } catch (err) {
+                showError('Network connection failure. Verify internet connectivity.');
+                submitBtn.disabled = false;
+            }
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (modal.style.display !== 'flex') {
+                return;
+            }
+
+            if (event.key === 'Escape') {
+                toggleModal(false);
+                return;
+            }
+
+            if (event.key === 'Tab') {
+                const focusableElements = getFocusableElements();
+                if (!focusableElements.length) {
+                    return;
+                }
+
+                const firstElement = focusableElements[0];
+                const lastElement = focusableElements[focusableElements.length - 1];
+
+                if (event.shiftKey && document.activeElement === firstElement) {
+                    event.preventDefault();
+                    lastElement.focus();
+                } else if (!event.shiftKey && document.activeElement === lastElement) {
+                    event.preventDefault();
+                    firstElement.focus();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
