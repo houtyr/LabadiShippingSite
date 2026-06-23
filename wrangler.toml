@@ -8,4 +8,4 @@ compatibility_date = "2026-06-12"
 [[d1_databases]]
 binding = "DB"
 database_name = "labadi-shipping-db"
-database_id = "REPLACE_WITH_D1_DATABASE_ID"
+database_id = "d35ebf88-9f98-4c04-b807-18654c82808c"
