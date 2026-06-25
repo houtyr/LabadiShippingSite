@@ -1,7 +1,31 @@
+const ALLOWED_ORIGIN = "*";
+const ROUTE_ORIGIN = "Massachusetts / New England";
+const ROUTE_DESTINATIONS = new Map([
+    ["Ghana", "Ghana"],
+    ["Ghana (Accra / Tema)", "Ghana"]
+]);
+
 function jsonResponse(payload, status = 200) {
     return new Response(JSON.stringify(payload), {
         status,
-        headers: { "Content-Type": "application/json" }
+        headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": ALLOWED_ORIGIN,
+            "Access-Control-Allow-Methods": "POST, OPTIONS",
+            "Access-Control-Allow-Headers": "Content-Type"
+        }
+    });
+}
+
+function optionsResponse() {
+    return new Response(null, {
+        status: 204,
+        headers: {
+            "Access-Control-Allow-Origin": ALLOWED_ORIGIN,
+            "Access-Control-Allow-Methods": "POST, OPTIONS",
+            "Access-Control-Allow-Headers": "Content-Type",
+            "Access-Control-Max-Age": "86400"
+        }
     });
 }
 
@@ -63,6 +87,15 @@ export async function onRequestPost(context) {
             return jsonResponse({ success: false, error: "Route values are too long." }, 400);
         }
 
+        if (cleanOrigin !== ROUTE_ORIGIN) {
+            return jsonResponse({ success: false, error: "Unsupported origin location." }, 400);
+        }
+
+        const normalizedDestination = ROUTE_DESTINATIONS.get(cleanDestination);
+        if (!normalizedDestination) {
+            return jsonResponse({ success: false, error: "Unsupported destination country." }, 400);
+        }
+
         const challengeForm = new FormData();
         challengeForm.append("secret", env.TURNSTILE_SECRET_KEY);
         challengeForm.append("response", turnstileToken);
@@ -86,7 +119,7 @@ export async function onRequestPost(context) {
 
         const dbResult = await env.DB.prepare(
             "INSERT INTO leads (name, phone, email, origin, destination, created_at) VALUES (?, ?, ?, ?, ?, ?)"
-        ).bind(cleanName, cleanPhone, cleanEmail, cleanOrigin, cleanDestination, createdAt).run();
+        ).bind(cleanName, cleanPhone, cleanEmail, cleanOrigin, normalizedDestination, createdAt).run();
 
         if (!dbResult.success) {
             throw new Error("D1 insert failed");
@@ -100,4 +133,8 @@ export async function onRequestPost(context) {
 
         return jsonResponse({ success: false, error: "System error while registering lead." }, 500);
     }
+}
+
+export function onRequestOptions() {
+    return optionsResponse();
 }

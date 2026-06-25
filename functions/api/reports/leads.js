@@ -1,7 +1,23 @@
 function jsonResponse(payload, status = 200) {
     return new Response(JSON.stringify(payload), {
         status,
-        headers: { "Content-Type": "application/json" }
+        headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "GET, OPTIONS",
+            "Access-Control-Allow-Headers": "Content-Type"
+        }
+    });
+}
+
+function optionsResponse() {
+    return new Response(null, {
+        status: 204,
+        headers: {
+            "Access-Control-Allow-Methods": "GET, OPTIONS",
+            "Access-Control-Allow-Headers": "Content-Type",
+            "Access-Control-Max-Age": "86400"
+        }
     });
 }
 
@@ -84,10 +100,17 @@ export async function onRequestGet(context) {
             headers: {
                 "Content-Type": "text/csv; charset=utf-8",
                 "Content-Disposition": `attachment; filename=\"${filename}\"`,
-                "Cache-Control": "no-store, must-revalidate"
+                "Cache-Control": "no-store, must-revalidate",
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "GET, OPTIONS",
+                "Access-Control-Allow-Headers": "Content-Type"
             }
         });
     } catch {
         return jsonResponse({ success: false, error: "Internal report generation failure." }, 500);
     }
+}
+
+export function onRequestOptions() {
+    return optionsResponse();
 }

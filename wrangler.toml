@@ -4,8 +4,11 @@ compatibility_date = "2026-06-12"
 [vars]
 # Optional: comma-separated allowlist for report downloads behind Cloudflare Access.
 # Example: ACCESS_ALLOWED_EMAILS = "admin@labadishipping.com,ops@labadishipping.com"
+# Required at runtime for lead verification.
+# TURNSTILE_SECRET_KEY must be added in the Cloudflare dashboard or wrangler secret store.
 
 [[d1_databases]]
 binding = "DB"
 database_name = "labadi-shipping-db"
+# Keep this identifier out of public forks when possible.
 database_id = "d35ebf88-9f98-4c04-b807-18654c82808c"
